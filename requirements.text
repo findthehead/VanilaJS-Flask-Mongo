@@ -1,0 +1,10 @@
+Flask
+Flask_restful
+Flask-SQLAlchemy
+flask_cors
+flask_jwt_extended
+Werkzeug
+python-dotenv
+PyJWT
+pymongo
+bcrypt
