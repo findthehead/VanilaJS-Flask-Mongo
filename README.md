@@ -1,4 +1,4 @@
-### simple API made in flask, vanilaJS and MongoDB ###
+### API made in flask with a frontend in vanillaJS and and database in MongoDB ###
 
 ### Features ###
 
@@ -12,6 +12,6 @@
 
 ```
 git clone https://github.com/findthehead/VanilaJS-Flask-Mongo.git
-cd https://github.com/findthehead/VanilaJS-Flask-Mongo
+cd VanilaJS-Flask-Mongo
 docker-compose up --build -d
 ```
