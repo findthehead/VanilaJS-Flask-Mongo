@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  backend:
+    build:
+     context: ./backend
+    volumes:
+      - ./backend:/backend
+    ports:
+      - "8000:8000"
+    networks:
+      - front_tier
+      - back_tier
+    depends_on:
+      - db
+    env_file:
+      - backend/app/.env
+    
+  frontend:
+     build:
+      context: ./frontend
+     volumes:
+      - ./frontend:/frontend
+     ports:
+      - "3000:3000"
+     networks:
+      - front_tier
+
+  db:
+    image: mongo:latest
+    volumes:
+      - ./db:/db
+    ports:
+      - "27017:27017"
+    networks:
+      - back_tier
+
+networks:
+  front_tier: {}
+  back_tier: {}

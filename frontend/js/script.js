@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             try {
                 const response = await fetch(
-                    "https://localhost:3000/login",
+                    "http://127.0.0.1:8000/login",
                     {
                         method: "POST",
                         headers: {
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             try {
                 const response = await fetch(
-                    "https://localhost:3000/register",
+                    "http://127.0.0.1:8000/register",
                     {
                         method: "POST",
                         headers: {
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             try {
                 const response = await fetch(
-                    "https://localhost:3000/profile",
+                    "http://127.0.0.1:8000/profile",
                     {
                         method: "GET",
                         headers: {

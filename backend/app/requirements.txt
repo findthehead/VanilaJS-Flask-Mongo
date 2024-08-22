@@ -1,6 +1,5 @@
 Flask
 Flask_restful
-Flask-SQLAlchemy
 flask_cors
 flask_jwt_extended
 Werkzeug
