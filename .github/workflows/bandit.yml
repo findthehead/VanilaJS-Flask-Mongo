@@ -1,7 +1,9 @@
-name: Bandit Scan
+name: Bandit and Trivy Scan
+
 on:
   push:
-    branches: [ mai]
+    branches: [main]
+
 jobs:
   bandit:
     permissions:
@@ -15,9 +17,13 @@ jobs:
         uses: shundor/python-bandit-scan@9cc5aa4a006482b8a7f91134412df6772dbda22c
         with:
           exit_zero: true
-    
+
+  trivy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
       - name: Container Scan
         uses: knqyf263/trivy-issue-action@v0.0.6
-        
         env: 
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
