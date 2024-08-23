@@ -1,4 +1,4 @@
-name: Bandit
+name: Bandit Scan
 on:
   push:
     branches: [ mai]
@@ -15,6 +15,7 @@ jobs:
         uses: shundor/python-bandit-scan@9cc5aa4a006482b8a7f91134412df6772dbda22c
         with:
           exit_zero: true
+    
       - name: Container Scan
         uses: knqyf263/trivy-issue-action@v0.0.6
         
