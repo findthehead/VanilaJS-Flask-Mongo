@@ -1,7 +1,7 @@
 name: Bandit
 on:
   push:
-    branches: [ main ]
+    branches: [ mai]
 jobs:
   bandit:
     permissions:
@@ -17,7 +17,6 @@ jobs:
           exit_zero: true
       - name: Container Scan
         uses: knqyf263/trivy-issue-action@v0.0.6
-        with:
-          exit_zero: true
+        
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
