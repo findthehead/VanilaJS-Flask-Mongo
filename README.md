@@ -1,6 +1,6 @@
-### API made in flask with a frontend in vanillaJS and and database in MongoDB ###
+### API made in flask with a frontend in vanillaJS and and database in MongoDB
 
-### Features ###
+### Features
 
 
 - Login
@@ -9,6 +9,8 @@
 - JWT
 
 
+
+### Setup and play with it 
 
 ```
 git clone https://github.com/findthehead/VanilaJS-Flask-Mongo.git

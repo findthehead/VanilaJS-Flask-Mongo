@@ -40,25 +40,29 @@ class Login(Resource):
             response.headers.add('Access-Control-Allow-Origin', '*')
             return response
         existing_user = users.find_one({"username": username})
-        existing_hashed_pw = existing_user.get("password")
-        if bcrypt.checkpw(password.encode('utf8'), existing_hashed_pw):
-            access_token = create_access_token(identity=username)
-            response = make_response(jsonify({"msg": "Logged in", "status": 200}))
+        if existing_user:
+            existing_hashed_pw = existing_user.get("password")
+            if bcrypt.checkpw(password.encode('utf8'), existing_hashed_pw):
+                access_token = create_access_token(identity=username)
+                response = make_response(jsonify({"msg": "Logged in", "status": 200}))
+                response.headers.add('Access-Control-Allow-Origin', '*')
+                response.set_cookie('access_token', access_token, httponly=True, secure=True, samesite='Lax')
+                return response
+
+            response = jsonify({"msg": "password is incorrect", "status": 401})
             response.headers.add('Access-Control-Allow-Origin', '*')
-            response.set_cookie('access_token', access_token, httponly=True, secure=True, samesite='Lax')
             return response
 
-        response = jsonify({"msg": "password is incorrect", "status": 401})
+        response = jsonify({"msg":"user is not registered","status": 401})
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response
-
 
 class Profile(Resource):
 
     @jwt_required()
     def get(self):
         current_user = get_jwt_identity()
-        response = jsonify({"msg": f"Welcome {current_user}", "status": 200})
+        response = jsonify({"msg": "success", "status": 200})
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response
 
@@ -107,7 +111,7 @@ class Register(Resource):
 
 api.add_resource(Home, '/')
 api.add_resource(Login, '/login')
-api.add_resource(Profile, '/profile')
+api.add_resource(Profile, '/profile/<profile_id>')
 api.add_resource(Register, '/register')
 
 if __name__ == '__main__':
